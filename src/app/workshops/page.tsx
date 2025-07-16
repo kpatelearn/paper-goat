@@ -1,3 +1,4 @@
+// page.tsx
 import Image from 'next/image';
 import { getWorkshops } from '@/firebase/getWorkshops';
 
@@ -26,7 +27,14 @@ export default async function WorkshopsPage() {
               />
               <div className="p-6">
                 <h2 className="text-xl font-semibold">{workshop.title}</h2>
-                <p className="text-sm text-gray-500 mb-1">{workshop.date}</p>
+                <p className="text-sm text-gray-500 mb-1">
+                  {/* Convert Timestamp to Date and format */}
+                  {workshop.date.toDate().toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </p>
                 <p className="text-sm text-gray-500 mb-3">{workshop.venue}</p>
                 <p className="mb-4">{workshop.description}</p>
                 <a

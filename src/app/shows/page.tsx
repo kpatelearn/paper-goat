@@ -44,5 +44,5 @@ export default async function ShowsPage() {
         </div>
       )}
     </div>
-  );
+  ); 
 }
