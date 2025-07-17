@@ -1,9 +1,17 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
+import { useEffect, useState, FormEvent } from 'react';
+import { signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth';
+import { auth } from '@/firebase/firebase.config';
 import { addWorkshop } from '@/firebase/addWorkshop';
 
 export default function NewWorkshopPage() {
+  const [user, setUser] = useState<any>(null);
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState('');
+
   const [title, setTitle] = useState('');
   const [date, setDate] = useState('');
   const [venue, setVenue] = useState('');
@@ -12,6 +20,29 @@ export default function NewWorkshopPage() {
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const handleLogin = async () => {
+    try {
+      const result = await signInWithEmailAndPassword(auth, email, password);
+      setUser(result.user);
+      setLoginError('');
+    } catch (err: any) {
+      console.error(err);
+      setLoginError('Login failed. Check your email and password.');
+    }
+  };
+
+  const handleLogout = async () => {
+    await signOut(auth);
+    setUser(null);
+  };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -23,7 +54,7 @@ export default function NewWorkshopPage() {
     try {
       await addWorkshop(
         { title, date, venue, description, signupLink },
-        imageFile,
+        imageFile
       );
       setMessage('Workshop added successfully.');
       setTitle('');
@@ -39,6 +70,35 @@ export default function NewWorkshopPage() {
       setSubmitting(false);
     }
   };
+
+  if (!user) {
+    return (
+      <div className="max-w-md mx-auto py-12 px-6">
+        <h1 className="text-xl font-bold mb-4">Admin Login</h1>
+        <input
+          type="email"
+          placeholder="Email"
+          className="w-full border rounded p-2 mb-2"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          className="w-full border rounded p-2 mb-4"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button
+          onClick={handleLogin}
+          className="w-full bg-black text-white py-2 rounded"
+        >
+          Log In
+        </button>
+        {loginError && <p className="text-red-600 mt-2">{loginError}</p>}
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-xl mx-auto px-6 py-12">
@@ -99,6 +159,12 @@ export default function NewWorkshopPage() {
         </button>
       </form>
       {message && <p className="mt-4">{message}</p>}
+      <button
+        onClick={handleLogout}
+        className="text-sm text-blue-600 underline mt-6"
+      >
+        Log out
+      </button>
     </div>
   );
 }
