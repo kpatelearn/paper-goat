@@ -38,17 +38,7 @@ export async function getShows(): Promise<Show[]> {
   } catch (error) {
     console.error('❌ Firestore fetch error:', error);
 
-    // TEMP: Fallback dummy data to check display
-    return [
-      {
-        id: 'test1',
-        title: 'Test Show',
-        date: 'Tomorrow',
-        venue: 'Test Venue',
-        description: 'Just checking fallback!',
-        imageUrl: '/images/test.jpg',
-        ticketLink: '#',
-      },
-    ];
+    // Return an empty array so the UI can show a friendly message
+    return [];
   }
 }
