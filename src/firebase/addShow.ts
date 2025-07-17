@@ -21,6 +21,7 @@ export async function addShow(data: ShowFormData, file: File) {
       reject,
       () => resolve(uploadTask.snapshot)
     );
+
   });
 
   const imageUrl = await getDownloadURL(snapshot.ref);
