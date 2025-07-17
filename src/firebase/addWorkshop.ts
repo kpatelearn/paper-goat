@@ -1,6 +1,11 @@
 import { db, storage } from './firebase.config';
 import { collection, addDoc } from 'firebase/firestore';
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import {
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+  type UploadTaskSnapshot,
+} from 'firebase/storage';
 
 export interface WorkshopFormData {
   title: string;
@@ -14,7 +19,7 @@ export async function addWorkshop(data: WorkshopFormData, file: File) {
   const storageRef = ref(storage, `workshops/${Date.now()}_${file.name}`);
   const uploadTask = uploadBytesResumable(storageRef, file);
 
-  const snapshot: any = await new Promise((resolve, reject) => {
+  const snapshot: UploadTaskSnapshot = await new Promise((resolve, reject) => {
     uploadTask.on(
       'state_changed',
       null,

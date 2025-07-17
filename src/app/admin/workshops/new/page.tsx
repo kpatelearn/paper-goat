@@ -1,12 +1,12 @@
 'use client';
 
 import { useEffect, useState, FormEvent } from 'react';
-import { signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth';
+import { signInWithEmailAndPassword, onAuthStateChanged, signOut, type User } from 'firebase/auth';
 import { auth } from '@/firebase/firebase.config';
 import { addWorkshop } from '@/firebase/addWorkshop';
 
 export default function NewWorkshopPage() {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -33,7 +33,7 @@ export default function NewWorkshopPage() {
       const result = await signInWithEmailAndPassword(auth, email, password);
       setUser(result.user);
       setLoginError('');
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(err);
       setLoginError('Login failed. Check your email and password.');
     }
