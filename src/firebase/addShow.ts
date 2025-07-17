@@ -15,7 +15,13 @@ export async function addShow(data: ShowFormData, file: File) {
   const uploadTask = uploadBytesResumable(storageRef, file);
 
   const snapshot: any = await new Promise((resolve, reject) => {
-    uploadTask.on('state_changed', null, reject, () => resolve(uploadTask.snapshot));
+    uploadTask.on(
+      'state_changed',
+      null,
+      reject,
+      () => resolve(uploadTask.snapshot)
+    );
+
   });
 
   const imageUrl = await getDownloadURL(snapshot.ref);
@@ -25,3 +31,4 @@ export async function addShow(data: ShowFormData, file: File) {
     imageUrl,
   });
 }
+
