@@ -36,6 +36,10 @@ export default function Home() {
             <h2 className="text-2xl font-bold mb-2">Upcoming Shows</h2>
             <p className="text-md">Catch our next performances around NZ.</p>
           </div>
+          <div className="bg-goat-blue text-white p-6 rounded-lg font-display text-center shadow-lg">
+  🐐 Tailwind is now working!
+</div>
+
         </section>
       </main>
   );
