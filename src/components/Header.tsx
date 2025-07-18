@@ -16,7 +16,7 @@ export default function Header() {
           <Link href="/workshops" className="hover:underline">
             Workshops
           </Link>
-          <Link href="/shop" className="hover:underline">
+          <Link href="https://papergoat.digitees.co.nz" className="hover:underline">
             Shop
           </Link>
           <Link href="/blog" className="hover:underline">
