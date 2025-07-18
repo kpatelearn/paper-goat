@@ -15,7 +15,7 @@ export default function LoginPage() {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      router.push('/admin/shows/new'); // Redirect on success
+      router.push('/admin'); // Redirect on success to dashboard
     } catch (err: any) {
       console.error(err);
       setError(err.message);
