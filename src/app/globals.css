@@ -616,6 +616,25 @@ body {
   transform: translateZ(0);
 }
 
+/* Mobile hamburger overlay */
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(23, 23, 23, 0.95);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+@media (min-width: 768px) {
+  .mobile-menu-overlay {
+    display: none;
+  }
+}
+
 /* Goat watermark */
 .goat-watermark {
   position: fixed;
