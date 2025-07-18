@@ -1,11 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './app/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
+    './src/app/**/*.{js,ts,jsx,tsx}',
+    './src/components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
+      colors: {
+        'goat-blue': '#1e3a8a',
+        'goat-yellow': '#facc15',
+        'goat-pink': '#ec4899',
+        'goat-black': '#171717',
+      },
       animation: {
         fadeIn: 'fadeIn 1s ease-out forwards',
       },
