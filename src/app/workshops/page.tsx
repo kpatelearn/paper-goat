@@ -1,6 +1,8 @@
 'use client';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { useRouter } from 'next/navigation';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '@/firebase/firebase.config';
@@ -13,6 +15,7 @@ export default function WorkshopsPage() {
   const router = useRouter();
 
   useEffect(() => {
+    AOS.init({ duration: 800 });
     (async () => {
       const data = await getWorkshops();
       setWorkshops(data);
@@ -36,7 +39,7 @@ export default function WorkshopsPage() {
       ) : (
         <div className="grid gap-10 md:grid-cols-2">
           {workshops.map(workshop => (
-            <div key={workshop.id} className="border rounded-lg overflow-hidden shadow-sm bg-white">
+            <div key={workshop.id} className="bg-white rounded-xl shadow-md overflow-hidden transition hover:shadow-lg" data-aos="fade-up">
               <Image
                 src={workshop.imageUrl}
                 alt={workshop.title}
@@ -45,28 +48,21 @@ export default function WorkshopsPage() {
                 className="w-full h-60 object-cover"
               />
               <div className="p-6">
-                <h2 className="text-xl font-semibold">{workshop.title}</h2>
-                <p className="text-sm text-gray-500 mb-1">
-                  {workshop.date.toDate().toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
-                </p>
-                <p className="text-sm text-gray-500 mb-3">{workshop.venue}</p>
+                <h2 className="text-2xl font-bold mb-2">{workshop.title}</h2>
+                <p className="text-sm text-gray-500">{workshop.venue}</p>
                 <p className="mb-4">{workshop.description}</p>
                 <a
                   href={workshop.signupLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block px-4 py-2 bg-black text-white text-sm font-medium rounded hover:bg-gray-800"
+                  className="inline-block px-4 py-2 bg-goat-pink text-white text-sm font-medium rounded hover:bg-pink-700"
                 >
                   Sign up
                 </a>
                 {isAdmin && (
-                  <div className="flex gap-4 mt-2">
-                    <button onClick={() => router.push(`/admin/workshops/edit/${workshop.id}`)}>Edit</button>
-                    <button onClick={() => handleDelete(workshop.id)}>Delete</button>
+                  <div className="flex gap-4 mt-4">
+                    <button onClick={() => router.push(`/admin/workshops/edit/${workshop.id}`)} className="text-goat-blue underline">Edit</button>
+                    <button onClick={() => handleDelete(workshop.id)} className="text-red-600 underline">Delete</button>
                   </div>
                 )}
               </div>

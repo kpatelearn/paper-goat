@@ -16,6 +16,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&family=DM+Sans:wght@400;600&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="bg-white text-black min-h-screen flex flex-col">
         <Header />
         <main className="flex-1">{children}</main>
