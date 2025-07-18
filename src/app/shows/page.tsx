@@ -1,6 +1,8 @@
 'use client';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { useRouter } from 'next/navigation';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '@/firebase/firebase.config';
@@ -13,6 +15,7 @@ export default function ShowsPage() {
   const router = useRouter();
 
   useEffect(() => {
+    AOS.init({ duration: 800 });
     (async () => {
       const data = await getShows();
       setShows(data);
@@ -35,8 +38,12 @@ export default function ShowsPage() {
         <p className="text-gray-500">No shows currently listed.</p>
       ) : (
         <div className="grid gap-10 md:grid-cols-2">
-          {shows.map(show => (
-            <div key={show.id} className="border rounded-lg overflow-hidden shadow-sm bg-white">
+            {shows.map(show => (
+              <div
+                key={show.id}
+                className="border rounded-lg overflow-hidden shadow-sm bg-white card"
+                data-aos="fade-up"
+              >
               <Image
                 src={show.imageUrl}
                 alt={show.title}
@@ -59,8 +66,18 @@ export default function ShowsPage() {
                 </a>
                 {isAdmin && (
                   <div className="flex gap-4 mt-2">
-                    <button onClick={() => router.push(`/admin/shows/edit/${show.id}`)}>Edit</button>
-                    <button onClick={() => handleDelete(show.id)}>Delete</button>
+                    <button
+                      onClick={() => router.push(`/admin/shows/edit/${show.id}`)}
+                      className="px-4 py-1 bg-goat-yellow text-black rounded-md text-sm hover:bg-yellow-400 transition"
+                    >
+                      ✏️ Edit
+                    </button>
+                    <button
+                      onClick={() => handleDelete(show.id)}
+                      className="px-4 py-1 bg-red-500 text-white rounded-md text-sm hover:bg-red-600 transition"
+                    >
+                      🗑️ Delete
+                    </button>
                   </div>
                 )}
               </div>

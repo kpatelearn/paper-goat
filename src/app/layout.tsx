@@ -22,10 +22,11 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-white text-black min-h-screen flex flex-col">
+      <body className="bg-goat-blue text-white min-h-screen flex flex-col">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <div className="goat-watermark">🐐</div>
       </body>
     </html>
   );
