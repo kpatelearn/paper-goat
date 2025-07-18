@@ -1,23 +1,42 @@
-// page.tsx
+'use client';
 import Image from 'next/image';
-import { getWorkshops } from '@/firebase/getWorkshops';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '@/firebase/firebase.config';
+import { getWorkshops, type Workshop } from '@/firebase/getWorkshops';
+import { deleteWorkshop } from '@/firebase/deleteWorkshop';
 
-export default async function WorkshopsPage() {
-  const workshops = await getWorkshops();
+export default function WorkshopsPage() {
+  const [workshops, setWorkshops] = useState<Workshop[]>([]);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    (async () => {
+      const data = await getWorkshops();
+      setWorkshops(data);
+    })();
+    const unsub = onAuthStateChanged(auth, user => setIsAdmin(!!user));
+    return () => unsub();
+  }, []);
+
+  const handleDelete = async (id: string) => {
+    if (confirm('Are you sure you want to delete this workshop?')) {
+      await deleteWorkshop(id);
+      setWorkshops(prev => prev.filter(w => w.id !== id));
+    }
+  };
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-12">
       <h1 className="text-3xl font-bold mb-8">Upcoming Workshops</h1>
-
       {workshops.length === 0 ? (
         <p className="text-gray-500">No workshops currently listed.</p>
       ) : (
         <div className="grid gap-10 md:grid-cols-2">
-          {workshops.map((workshop) => (
-            <div
-              key={workshop.id}
-              className="border rounded-lg overflow-hidden shadow-sm bg-white"
-            >
+          {workshops.map(workshop => (
+            <div key={workshop.id} className="border rounded-lg overflow-hidden shadow-sm bg-white">
               <Image
                 src={workshop.imageUrl}
                 alt={workshop.title}
@@ -28,7 +47,6 @@ export default async function WorkshopsPage() {
               <div className="p-6">
                 <h2 className="text-xl font-semibold">{workshop.title}</h2>
                 <p className="text-sm text-gray-500 mb-1">
-                  {/* Convert Timestamp to Date and format */}
                   {workshop.date.toDate().toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
@@ -45,6 +63,12 @@ export default async function WorkshopsPage() {
                 >
                   Sign up
                 </a>
+                {isAdmin && (
+                  <div className="flex gap-4 mt-2">
+                    <button onClick={() => router.push(`/admin/workshops/edit/${workshop.id}`)}>Edit</button>
+                    <button onClick={() => handleDelete(workshop.id)}>Delete</button>
+                  </div>
+                )}
               </div>
             </div>
           ))}
