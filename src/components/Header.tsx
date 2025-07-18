@@ -22,6 +22,9 @@ export default function Header() {
           <Link href="/blog" className="hover:underline">
             Blog
           </Link>
+          <Link href="/login" className="hover:underline">
+            Admin Login
+          </Link>
         </nav>
       </div>
     </header>
