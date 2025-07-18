@@ -32,16 +32,16 @@ export default function ShowsPage() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-12">
-      <h1 className="text-3xl font-bold mb-8">Upcoming Shows</h1>
+    <div className="container py-12">
+      <h1 className="text-display-md heading-brand mb-8">Upcoming Shows</h1>
       {shows.length === 0 ? (
         <p className="text-gray-500">No shows currently listed.</p>
       ) : (
-        <div className="grid gap-10 md:grid-cols-2">
+        <div className="grid-auto-fit">
             {shows.map(show => (
               <div
                 key={show.id}
-                className="border rounded-lg overflow-hidden shadow-sm bg-white card"
+                className="card card-hover"
                 data-aos="fade-up"
               >
               <Image
@@ -60,7 +60,7 @@ export default function ShowsPage() {
                   href={show.ticketLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block px-4 py-2 bg-black text-white text-sm font-medium rounded hover:bg-gray-800"
+                  className="btn btn-secondary"
                 >
                   Get Tickets
                 </a>
@@ -68,13 +68,13 @@ export default function ShowsPage() {
                   <div className="flex gap-4 mt-2">
                     <button
                       onClick={() => router.push(`/admin/shows/edit/${show.id}`)}
-                      className="px-4 py-1 bg-goat-yellow text-black rounded-md text-sm hover:bg-yellow-400 transition"
+                      className="btn btn-accent btn-sm"
                     >
                       ✏️ Edit
                     </button>
                     <button
                       onClick={() => handleDelete(show.id)}
-                      className="px-4 py-1 bg-red-500 text-white rounded-md text-sm hover:bg-red-600 transition"
+                      className="btn btn-sm bg-red-500 text-white hover:bg-red-600"
                     >
                       🗑️ Delete
                     </button>
