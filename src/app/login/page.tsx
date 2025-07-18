@@ -34,7 +34,7 @@ export default function LoginPage() {
 
   return (
     <div className="p-6 max-w-md mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Admin Login</h1>
+      <h1 className="text-heading-lg heading-brand mb-4">Admin Login</h1>
       <form onSubmit={handleLogin} className="space-y-4">
         <input
           type="email"
@@ -55,7 +55,7 @@ export default function LoginPage() {
         {error && <p className="text-red-500">{error}</p>}
         <button
           type="submit"
-          className="w-full bg-black text-white py-2 rounded"
+          className="btn btn-secondary w-full"
         >
           Log In
         </button>

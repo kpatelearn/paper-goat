@@ -32,14 +32,14 @@ export default function WorkshopsPage() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-12">
-      <h1 className="text-3xl font-bold mb-8">Upcoming Workshops</h1>
+    <div className="container py-12">
+      <h1 className="text-display-md heading-brand mb-8">Upcoming Workshops</h1>
       {workshops.length === 0 ? (
         <p className="text-gray-500">No workshops currently listed.</p>
       ) : (
-        <div className="grid gap-10 md:grid-cols-2">
+        <div className="grid-auto-fit">
           {workshops.map(workshop => (
-            <div key={workshop.id} className="bg-white rounded-xl shadow-md overflow-hidden transition hover:shadow-lg" data-aos="fade-up">
+            <div key={workshop.id} className="card card-hover" data-aos="fade-up">
               <Image
                 src={workshop.imageUrl}
                 alt={workshop.title}
@@ -48,14 +48,14 @@ export default function WorkshopsPage() {
                 className="w-full h-60 object-cover"
               />
               <div className="p-6">
-                <h2 className="text-2xl font-bold mb-2">{workshop.title}</h2>
+                <h2 className="text-heading-lg mb-2">{workshop.title}</h2>
                 <p className="text-sm text-gray-500">{workshop.venue}</p>
                 <p className="mb-4">{workshop.description}</p>
                 <a
                   href={workshop.signupLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block px-4 py-2 bg-goat-pink text-white text-sm font-medium rounded hover:bg-pink-700"
+                  className="btn btn-primary"
                 >
                   Sign up
                 </a>
@@ -63,13 +63,13 @@ export default function WorkshopsPage() {
                   <div className="flex gap-4 mt-4">
                     <button
                       onClick={() => router.push(`/admin/workshops/edit/${workshop.id}`)}
-                      className="px-4 py-1 bg-goat-yellow text-black rounded-md text-sm hover:bg-yellow-400 transition"
+                      className="btn btn-accent btn-sm"
                     >
                       ✏️ Edit
                     </button>
                     <button
                       onClick={() => handleDelete(workshop.id)}
-                      className="px-4 py-1 bg-red-500 text-white rounded-md text-sm hover:bg-red-600 transition"
+                      className="btn btn-sm bg-red-500 text-white hover:bg-red-600"
                     >
                       🗑️ Delete
                     </button>
