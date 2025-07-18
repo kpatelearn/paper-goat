@@ -23,6 +23,27 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease-in-out;
+}
+
+.goat-watermark {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  font-size: 2rem;
+  opacity: 0.2;
+  pointer-events: none;
 }
 
 h1,

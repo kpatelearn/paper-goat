@@ -61,8 +61,18 @@ export default function WorkshopsPage() {
                 </a>
                 {isAdmin && (
                   <div className="flex gap-4 mt-4">
-                    <button onClick={() => router.push(`/admin/workshops/edit/${workshop.id}`)} className="text-goat-blue underline">Edit</button>
-                    <button onClick={() => handleDelete(workshop.id)} className="text-red-600 underline">Delete</button>
+                    <button
+                      onClick={() => router.push(`/admin/workshops/edit/${workshop.id}`)}
+                      className="px-4 py-1 bg-goat-yellow text-black rounded-md text-sm hover:bg-yellow-400 transition"
+                    >
+                      ✏️ Edit
+                    </button>
+                    <button
+                      onClick={() => handleDelete(workshop.id)}
+                      className="px-4 py-1 bg-red-500 text-white rounded-md text-sm hover:bg-red-600 transition"
+                    >
+                      🗑️ Delete
+                    </button>
                   </div>
                 )}
               </div>
