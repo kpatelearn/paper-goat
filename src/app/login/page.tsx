@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { useState, useEffect } from 'react';
+import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '@/firebase/firebase.config';
 import { useRouter } from 'next/navigation';
 
@@ -11,11 +11,21 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const router = useRouter();
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        router.push('/admin');
+      }
+    });
+
+    return () => unsubscribe();
+  }, [router]);
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      router.push('/admin'); // Redirect on success to dashboard
+      router.push('/admin');
     } catch (err: any) {
       console.error(err);
       setError(err.message);
@@ -50,10 +60,6 @@ export default function LoginPage() {
           Log In
         </button>
       </form>
-      <button onClick={() => signOut(auth)} className="mt-4 underline text-sm text-gray-500">
-  Sign out
-</button>
-
     </div>
   );
 }
