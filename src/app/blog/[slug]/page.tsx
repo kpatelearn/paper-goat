@@ -10,11 +10,13 @@ function formatContentAsParagraphs(text: string) {
     .join('');
 }
 
-export default async function BlogPostPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+interface BlogPageProps {
+  params: {
+    slug: string;
+  };
+}
+export default async function BlogPostPage({ params }: BlogPageProps) {
+
   const post = await getBlogPostBySlug(params.slug);
 
   if (!post) {
