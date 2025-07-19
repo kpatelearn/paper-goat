@@ -60,7 +60,7 @@ export default function ShowsPage() {
                   href={show.ticketLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-secondary"
+                  className="btn btn-primary"
                 >
                   Get Tickets
                 </a>
