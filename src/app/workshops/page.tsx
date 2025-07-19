@@ -49,7 +49,7 @@ export default function WorkshopsPage() {
                 className="w-full h-60 object-cover"
               />
               <div className="p-6">
-                <h2 className="text-heading-lg mb-2">{workshop.title}</h2>
+                <h2 className="text-heading-lg text-goat-black/80 mb-2">{workshop.title}</h2>
                 <p className="text-sm text-gray-500">{workshop.venue}</p>
                 <p className="mb-4">{workshop.description}</p>
                 <Link href={`/workshops/${workshop.id}/signup`}>

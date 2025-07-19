@@ -7,6 +7,9 @@ import Footer from '@/components/Footer';
 export const metadata: Metadata = {
   title: 'Paper Goat',
   description: 'Social enterprise creating opportunities for NZ performers.',
+  icons: {
+    icon: '/images/favicon.ico', // adjust if using .png or .svg
+  },
 };
 
 export default function RootLayout({
