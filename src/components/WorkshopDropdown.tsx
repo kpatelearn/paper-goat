@@ -16,7 +16,7 @@ export default function WorkshopDropdown({
 }) {
   return (
     <select
-      className="border rounded p-2"
+      className="border rounded p-2 bg-goat-black/80"
       value={value}
       onChange={e => onChange(e.target.value)}
     >

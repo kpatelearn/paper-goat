@@ -49,7 +49,7 @@ function WorkshopSignupsDashboard() {
     <div className="max-w-2xl mx-auto px-6 py-12">
       <h1 className="text-2xl font-bold mb-4">Workshop Signups</h1>
       <WorkshopDropdown workshops={workshops} value={selectedId} onChange={loadSignups} />
-      {loading ? <p className="mt-4">Loading...</p> : <div className="mt-4"><WorkshopSignupsTable signups={signups} /></div>}
+      {loading ? <p className="mt-4 bg-goat-black/80">Loading...</p> : <div className="mt-4"><WorkshopSignupsTable signups={signups} /></div>}
     </div>
   );
 }

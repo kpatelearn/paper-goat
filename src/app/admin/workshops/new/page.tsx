@@ -136,14 +136,6 @@ export default function NewWorkshopPage() {
           required
         />
         <input
-          type="text"
-          placeholder="Signup Link"
-          className="w-full border rounded p-2 text-white bg-goat-black/80"
-          value={signupLink}
-          onChange={(e) => setSignupLink(e.target.value)}
-          required
-        />
-        <input
           type="file"
           accept="image/*"
           className="w-full"

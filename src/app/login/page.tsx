@@ -34,12 +34,12 @@ export default function LoginPage() {
 
   return (
     <div className="p-6 max-w-md mx-auto">
-      <h1 className="text-heading-lg heading-brand mb-4">Admin Login</h1>
+      <h1 className="w-full border rounded p-2 text-white bg-goat-black/80">Admin Login</h1>
       <form onSubmit={handleLogin} className="space-y-4">
         <input
           type="email"
           placeholder="Email"
-          className="w-full p-2 border rounded"
+          className="w-full border rounded p-2 text-white bg-goat-black/80"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -47,7 +47,7 @@ export default function LoginPage() {
         <input
           type="password"
           placeholder="Password"
-          className="w-full p-2 border rounded"
+          className="w-full border rounded p-2 text-white bg-goat-black/80"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
