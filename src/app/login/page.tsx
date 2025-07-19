@@ -34,12 +34,12 @@ export default function LoginPage() {
 
   return (
     <div className="p-6 max-w-md mx-auto">
-      <h1 className="w-full border rounded p-2 text-white bg-goat-black/80">Admin Login</h1>
+      <h1 className="w-full text-white text-3xl font-bold">Admin Login</h1>
       <form onSubmit={handleLogin} className="space-y-4">
         <input
           type="email"
           placeholder="Email"
-          className="w-full border rounded p-2 text-white bg-goat-black/80"
+          className="w-full border rounded p-2 text-white bg-goat-black/80 mt-8"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
