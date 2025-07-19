@@ -2,6 +2,14 @@ import { getBlogPostBySlug } from '@/firebase/getBlogPostBySlug';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 
+function formatContentAsParagraphs(text: string) {
+  return text
+    .split('\n')
+    .filter((line) => line.trim() !== '')
+    .map((line) => `<p>${line.trim()}</p>`)
+    .join('');
+}
+
 export default async function BlogPostPage({
   params,
 }: {
@@ -26,7 +34,12 @@ export default async function BlogPostPage({
           className="w-full h-auto mb-6"
         />
       )}
-      <div dangerouslySetInnerHTML={{ __html: post.content }} />
+      <div
+        className="prose prose-invert max-w-none"
+        dangerouslySetInnerHTML={{
+          __html: formatContentAsParagraphs(post.content),
+        }}
+      />
     </div>
   );
 }

@@ -59,7 +59,7 @@ export default function BlogPage() {
                   </Link>
                 </h2>
                 <p className="text-sm text-gray-500 mb-4">{post.date}</p>
-                <Link href={`/blog/${post.slug}`} className="btn btn-secondary btn-sm">
+                <Link href={`/blog/${post.slug}`} className="btn btn-primary btn-sm">
                   Read More
                 </Link>
                 {isAdmin && (

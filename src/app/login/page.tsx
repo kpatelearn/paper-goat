@@ -55,7 +55,7 @@ export default function LoginPage() {
         {error && <p className="text-red-500">{error}</p>}
         <button
           type="submit"
-          className="btn btn-secondary w-full"
+          className="btn btn-primary mt-12"
         >
           Log In
         </button>

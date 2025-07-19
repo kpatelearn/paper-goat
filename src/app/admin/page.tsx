@@ -16,26 +16,26 @@ function AdminDashboard() {
       <div className="grid gap-6 sm:grid-cols-3">
         <Link
           href="/admin/shows/new"
-          className="border rounded-lg p-6 text-center hover:bg-gray-50"
+          className="border rounded-lg p-6 text-center text-white hover:bg-white hover:text-blue-600 transition"
         >
           New Show
         </Link>
         <Link
           href="/admin/workshops/new"
-          className="border rounded-lg p-6 text-center hover:bg-gray-50"
+          className="border rounded-lg p-6 text-center text-white hover:bg-white hover:text-blue-600 transition"
         >
           New Workshop
         </Link>
         <Link
           href="/admin/blog/new"
-          className="border rounded-lg p-6 text-center hover:bg-gray-50"
+          className="border rounded-lg p-6 text-center text-white hover:bg-white hover:text-blue-600 transition"
         >
           New Blog Post
         </Link>
       </div>
       <button
         onClick={handleLogout}
-        className="mt-8 underline text-sm text-blue-600"
+        className="btn btn-primary mt-12"
       >
         Log out
       </button>
