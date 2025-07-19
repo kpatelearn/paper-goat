@@ -53,7 +53,7 @@ function NewShowPage() {
         <input
           type="text"
           placeholder="Title"
-          className="w-full border rounded p-2"
+          className="w-full border rounded p-2 text-white bg-goat-black/80"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
@@ -61,7 +61,7 @@ function NewShowPage() {
         <input
           type="text"
           placeholder="Date"
-          className="w-full border rounded p-2"
+          className="w-full border rounded p-2 text-white bg-goat-black/80"
           value={date}
           onChange={(e) => setDate(e.target.value)}
           required
@@ -69,14 +69,14 @@ function NewShowPage() {
         <input
           type="text"
           placeholder="Venue"
-          className="w-full border rounded p-2"
+          className="w-full border rounded p-2 text-white bg-goat-black/80"
           value={venue}
           onChange={(e) => setVenue(e.target.value)}
           required
         />
         <textarea
           placeholder="Description"
-          className="w-full border rounded p-2"
+          className="w-full border rounded p-2 text-white bg-goat-black/80"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           required
@@ -84,7 +84,7 @@ function NewShowPage() {
         <input
           type="text"
           placeholder="Ticket Link"
-          className="w-full border rounded p-2"
+          className="w-full border rounded p-2 text-white bg-goat-black/80"
           value={ticketLink}
           onChange={(e) => setTicketLink(e.target.value)}
           required
@@ -99,7 +99,7 @@ function NewShowPage() {
         <button
           type="submit"
           disabled={submitting}
-          className="px-4 py-2 bg-black text-white rounded disabled:opacity-50"
+          className="px-4 py-2 bg-goat-black/80 text-white rounded disabled:opacity-50"
         >
           {submitting ? 'Uploading...' : 'Add Show'}
         </button>
@@ -108,7 +108,7 @@ function NewShowPage() {
       {message && <p className="mt-4">{message}</p>}
       <button
         onClick={handleLogout}
-        className="text-sm text-blue-600 underline mt-6"
+        className="btn btn-primary mt-12"
       >
         Log out
       </button>

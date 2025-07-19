@@ -74,7 +74,7 @@ function EditBlogPage() {
         <input
           type="text"
           placeholder="Title"
-          className="w-full border rounded p-2 text-white bg-goat-black"
+          className="w-full border rounded p-2 text-white bg-goat-black/80"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
@@ -82,7 +82,7 @@ function EditBlogPage() {
         <input
           type="text"
           placeholder="Date"
-          className="w-full border rounded p-2 text-white bg-goat-black"
+          className="w-full border rounded p-2 text-white bg-goat-black/80"
           value={date}
           onChange={(e) => setDate(e.target.value)}
           required
@@ -90,18 +90,18 @@ function EditBlogPage() {
         <input
           type="text"
           placeholder="Slug"
-          className="w-full border rounded p-2 text-white bg-goat-black"
+          className="w-full border rounded p-2 text-white bg-goat-black/80"
           value={slug}
           onChange={(e) => setSlug(e.target.value)}
           required
         />
-        <textarea
-          placeholder="Content"
-          className="w-full border rounded p-2 text-white bg-goat-black"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          required
-        />
+       <div
+  contentEditable
+  className="w-full border rounded p-2 text-white bg-goat-black/80 min-h-[200px]"
+  onInput={(e) => setContent((e.target as HTMLElement).innerHTML)}
+  dangerouslySetInnerHTML={{ __html: content }}
+  suppressContentEditableWarning={true}
+/>
 
         {currentImageUrl && (
           <div>
@@ -118,7 +118,7 @@ function EditBlogPage() {
         />
         <p className="text-xs text-white italic">Landscape-oriented images work best.</p>
 
-        <button type="submit" className="px-4 py-2 bg-black text-white rounded">
+        <button type="submit" className="px-4 py-2 bg-goat-black/80 text-white rounded">
           Save
         </button>
       </form>

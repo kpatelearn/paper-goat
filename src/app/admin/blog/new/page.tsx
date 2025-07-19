@@ -74,7 +74,7 @@ function NewBlogPostPage() {
         />
    <div
   contentEditable
-  className="w-full border rounded p-2 text-white bg-goat-black min-h-[200px]"
+  className="w-full border rounded p-2 text-white bg-goat-black/80 min-h-[200px]"
   onInput={(e) => setContent((e.target as HTMLElement).innerHTML)}
   dangerouslySetInnerHTML={{ __html: content }}
   suppressContentEditableWarning={true}

@@ -25,42 +25,43 @@ export default function WorkshopSignUpForm({ onSubmit }: { onSubmit: (values: Si
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <input
-        name="firstName"
-        placeholder="First Name"
-        className="w-full border rounded p-2"
-        value={values.firstName}
-        onChange={handleChange}
-        required
-      />
-      <input
-        name="lastName"
-        placeholder="Last Name"
-        className="w-full border rounded p-2"
-        value={values.lastName}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        className="w-full border rounded p-2"
-        value={values.email}
-        onChange={handleChange}
-        required
-      />
-      <input
-        name="phone"
-        placeholder="Phone (optional)"
-        className="w-full border rounded p-2"
-        value={values.phone ?? ''}
-        onChange={handleChange}
-      />
-      <button type="submit" disabled={submitting} className="btn btn-primary">
-        {submitting ? 'Submitting...' : 'Sign Up'}
-      </button>
-    </form>
+  <form onSubmit={handleSubmit} className="space-y-4">
+  <input
+    name="firstName"
+    placeholder="First Name"
+    className="w-full border rounded p-2 text-white bg-goat-black/80"
+    value={values.firstName}
+    onChange={handleChange}
+    required
+  />
+  <input
+    name="lastName"
+    placeholder="Last Name"
+    className="w-full border rounded p-2 text-white bg-goat-black/80"
+    value={values.lastName}
+    onChange={handleChange}
+    required
+  />
+  <input
+    type="email"
+    name="email"
+    placeholder="Email"
+    className="w-full border rounded p-2 text-white bg-goat-black/80"
+    value={values.email}
+    onChange={handleChange}
+    required
+  />
+  <input
+    name="phone"
+    placeholder="Phone (optional)"
+    className="w-full border rounded p-2 text-white bg-goat-black/80"
+    value={values.phone ?? ''}
+    onChange={handleChange}
+  />
+  <button type="submit" disabled={submitting} className="btn btn-primary">
+    {submitting ? 'Submitting...' : 'Sign Up'}
+  </button>
+</form>
+
   );
 }

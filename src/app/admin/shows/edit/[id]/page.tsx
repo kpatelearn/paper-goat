@@ -55,7 +55,7 @@ function EditShowPage() {
         <input
           type="text"
           placeholder="Title"
-          className="w-full border rounded p-2"
+          className="w-full border rounded p-2 text-white bg-goat-black/80"
           value={title}
           onChange={e => setTitle(e.target.value)}
           required
@@ -63,7 +63,7 @@ function EditShowPage() {
         <input
           type="text"
           placeholder="Date"
-          className="w-full border rounded p-2"
+          className="w-full border rounded p-2 text-white bg-goat-black/80"
           value={date}
           onChange={e => setDate(e.target.value)}
           required
@@ -71,14 +71,14 @@ function EditShowPage() {
         <input
           type="text"
           placeholder="Venue"
-          className="w-full border rounded p-2"
+          className="w-full border rounded p-2 text-white bg-goat-black/80"
           value={venue}
           onChange={e => setVenue(e.target.value)}
           required
         />
         <textarea
           placeholder="Description"
-          className="w-full border rounded p-2"
+          className="w-full border rounded p-2 text-white bg-goat-black/80"
           value={description}
           onChange={e => setDescription(e.target.value)}
           required
@@ -86,12 +86,12 @@ function EditShowPage() {
         <input
           type="text"
           placeholder="Ticket Link"
-          className="w-full border rounded p-2"
+          className="w-full border rounded p-2 text-white bg-goat-black/80"
           value={ticketLink}
           onChange={e => setTicketLink(e.target.value)}
           required
         />
-        <button type="submit" className="px-4 py-2 bg-black text-white rounded">
+        <button type="submit" className="px-4 py-2 bg-goat-black/80 text-white rounded">
           Save
         </button>
       </form>
