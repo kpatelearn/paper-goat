@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -51,14 +52,9 @@ export default function WorkshopsPage() {
                 <h2 className="text-heading-lg mb-2">{workshop.title}</h2>
                 <p className="text-sm text-gray-500">{workshop.venue}</p>
                 <p className="mb-4">{workshop.description}</p>
-                <a
-                  href={workshop.signupLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-primary"
-                >
-                  Sign up
-                </a>
+                <Link href={`/workshops/${workshop.id}/signup`}>
+                  <button className="btn btn-primary">Sign Up</button>
+                </Link>
                 {isAdmin && (
                   <div className="flex gap-4 mt-4">
                     <button
